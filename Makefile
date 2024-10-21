@@ -2,7 +2,7 @@ sclean:
 	rm -fr ./server/dist/ 
 
 sbuild:
-	cd ./server/dist/ && tsc
+	cd ./server/ && tsc
 
 srun:
 	nodemon ./server/dist/server.js
