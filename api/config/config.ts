@@ -1,13 +1,4 @@
-//import libs
-import * as path from "node:path";
-import * as dotenv from "dotenv";
-import process from "node:process";
-
-const __dirname:string = import.meta.dirname ? import.meta.dirname : "";
-
-dotenv.config({
-    path : path.resolve(__dirname, '.env')
-});
+import "jsr:@std/dotenv/load";
 
 interface ENV
 {
@@ -27,17 +18,16 @@ interface Config
 
 const getConfig = ():ENV => {
     return {
-        PORT: process.env.PORT ? Number(process.env.PORT) : undefined,
-        JWT_TOKEN: process.env.JWT_TOKEN,
-        DB_CONNECT_STRING: process.env.DB_CONNECT_STRING,
-        APP_NAME: process.env.APP_NAME,
+        PORT: Deno.env.get('PORT') ? Number(Deno.env.get('PORT')) : undefined,
+        JWT_TOKEN: Deno.env.get('JWT_TOKEN'),
+        DB_CONNECT_STRING: Deno.env.get('DB_CONNECT_STRING'),
+        APP_NAME: Deno.env.get('APP_NAME'),
     }
 }
 
 const getSanitizedConfig = (config:ENV): Config => {
     for (const [key, value] of Object.entries(config))
     {
-        console.log(__dirname)
         if (value === undefined) throw new Error(`[Error] - Config : Missing key ${key} in .env config file`)
     }
     return config as Config
