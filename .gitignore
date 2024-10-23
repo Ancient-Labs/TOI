@@ -12,8 +12,8 @@
 /client/dist-ssr
 /client/*.local
 
-/server/node_modules
-/server/dist
+/api/node_modules
+/api/dist
 
 # Editor directories and files
 .vscode/*
