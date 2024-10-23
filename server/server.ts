@@ -4,6 +4,9 @@ import * as http from "http";
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 
+//require config
+import config from "./config/config";
+
 let app:express.Application = express();
 let server = http.createServer(app);
 
@@ -12,6 +15,6 @@ app.use(bodyParser.json({limit:"5mb"}));
 
 app.use(cookieParser());
 
-server.listen(5700, ():void => {
-  console.log("App listen on 5700")
+server.listen(config.PORT, ():void => {
+  console.log(`[Info] : App listening on PORT=${config.PORT}`)
 });
