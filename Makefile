@@ -5,4 +5,4 @@ sbuild:
 	cd ./server/ && tsc
 
 srun:
-	nodemon ./server/dist/server.js
+	cd ./api/ && deno run --watch --allow-read --allow-env --allow-net server.ts
