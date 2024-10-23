@@ -13,7 +13,7 @@
 /client/*.local
 
 /server/node_modules
-/server/dist/
+/server/dist
 
 # Editor directories and files
 .vscode/*
