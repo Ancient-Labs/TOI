@@ -6,6 +6,7 @@ interface ENV
     JWT_TOKEN           : string | undefined;
     DB_CONNECT_STRING   : string | undefined;
     APP_NAME            : string | undefined;
+    LOG_FOLDER          : string | undefined;
 }
 
 interface Config
@@ -14,6 +15,7 @@ interface Config
     JWT_TOKEN           : string;
     DB_CONNECT_STRING   : string;
     APP_NAME            : string;
+    LOG_FOLDER          : string;
 };
 
 const getConfig = ():ENV => {
@@ -22,6 +24,7 @@ const getConfig = ():ENV => {
         JWT_TOKEN: Deno.env.get('JWT_TOKEN'),
         DB_CONNECT_STRING: Deno.env.get('DB_CONNECT_STRING'),
         APP_NAME: Deno.env.get('APP_NAME'),
+        LOG_FOLDER: Deno.env.get('LOG_FOLDER')
     }
 }
 
