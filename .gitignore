@@ -15,7 +15,7 @@
 /api/node_modules
 /api/dist
 /api/logs
-api/.env
+/api/.env
 
 # Editor directories and files
 .vscode/*
