@@ -36,7 +36,7 @@ export function requireAuth(req: express.Request, res: express.Response, next: (
 
     if(!token) return res.status(200);
     
-    jwt.verify(token, config.JWT_TOKEN, (err: string, decodedToken: decodedTokenType) => {
+    jwt.verify(token, config.JWT_TOKEN, (err: string, _decodedToken: decodedTokenType) => {
         if (err)
         {
             console.log(err);
