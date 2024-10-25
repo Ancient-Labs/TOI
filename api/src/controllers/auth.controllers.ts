@@ -3,7 +3,7 @@ import { sign } from "npm:jsonwebtoken";
 import config from "../../config/config.ts";
 import log from "../../log.ts";
 import userModel from "../../models/user.model.ts";
-import { type IUserDocument, type IUserModel } from "../types/index.ts";
+import type { IUserDocument, User } from "../types/index.ts";
 
 //Cookie maxAge 7 days
 const maxAge:number = 604800000;
@@ -35,9 +35,10 @@ export async function signin(req:Request, res:Response): Promise<void>
     const {log, password}: {log:string,password:string} = req.body;
     
     try {
-        const user:any = await userModel.login(log, password);
-        if (user)
+        const queryUser:IUserDocument | null  = await userModel.login(log, password);
+        if (queryUser)
         {
+            const user:User = queryUser;
             const token:string = createToken(user._id);
             res.cookie('auth', token, {httpOnly: true, maxAge});
             return res.status(200).json({user});
@@ -49,7 +50,7 @@ export async function signin(req:Request, res:Response): Promise<void>
 }
 
 //to logout a user "signout"
-export const signout = async(_req: Request, res: Response) => {
+export const signout = (_req: Request, res: Response) => {
     res.cookie("auth", null, {httpOnly: true, maxAge: 1});
     return res.status(200).send('logout');
 }
