@@ -5,6 +5,7 @@
     "jsr:@std/dotenv@*": "0.225.2",
     "jsr:@std/internal@^1.0.4": "1.0.4",
     "npm:@types/node@*": "22.5.4",
+    "npm:@types/validator@^13.12.2": "13.12.2",
     "npm:bcrypt@^5.1.1": "5.1.1",
     "npm:body-parser@*": "1.20.3",
     "npm:body-parser@^1.20.3": "1.20.3",
@@ -60,6 +61,9 @@
       "dependencies": [
         "undici-types"
       ]
+    },
+    "@types/validator@13.12.2": {
+      "integrity": "sha512-6SlHBzUW8Jhf3liqrGGXyTJSIFe4nqlJ5A5KaMZ2l/vbM3Wh3KSybots/wfWVzNLK4D1NZluDlSQIbIEPx6oyA=="
     },
     "@types/webidl-conversions@7.0.3": {
       "integrity": "sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA=="
@@ -865,6 +869,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1",
+      "npm:@types/validator@^13.12.2",
       "npm:bcrypt@^5.1.1",
       "npm:body-parser@^1.20.3",
       "npm:cookie-parser@^1.4.7",

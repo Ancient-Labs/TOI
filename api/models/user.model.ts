@@ -1,9 +1,9 @@
 import type { Model } from "mongoose";
 import type { Document } from "mongoose";
 import { Schema } from "mongoose";
-import { isEmail } from "npm:validator/lib/isEmail"
 import {genSalt, hash, compare} from "bcrypt";
 import { model } from "mongoose";
+import isEmail from "npm:validator/lib/isEmail.js";
 import type { IUserDocument, User } from "../src/types/index.ts";
 import type { IUserModel } from "../src/types/user.ts";
 
