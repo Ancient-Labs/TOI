@@ -18,6 +18,12 @@ app.use(bodyParser.json({limit:"5mb"}));
 
 app.use(cookieParser());
 
+//import routes
+import authRoutes from "./src/routes/auth.routes.ts";
+
+//Route init
+app.use('/api/auth', authRoutes);
+
 server.listen(config.PORT, ():void => {
   log(`App listening on PORT=${config.PORT}`, 3)
 });
