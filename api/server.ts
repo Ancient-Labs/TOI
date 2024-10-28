@@ -20,9 +20,11 @@ app.use(cookieParser());
 
 //import routes
 import authRoutes from "./src/routes/auth.routes.ts";
+import userRoutes from "./src/routes/user.routes.ts";
 
 //Route init
 app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 
 server.listen(config.PORT, ():void => {
   log(`App listening on PORT=${config.PORT}`, 3)
