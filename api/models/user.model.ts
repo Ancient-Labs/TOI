@@ -6,6 +6,9 @@ import { model } from "mongoose";
 import isEmail from "npm:validator/lib/isEmail.js";
 import type { IUserDocument, User } from "../src/types/index.ts";
 import type { IUserModel } from "../src/types/user.ts";
+import { isValidObjectId } from "mongoose";
+import log from "../log.ts";
+import { isEmpty } from "../src/utils/index.ts";
 
 
 export interface UserModel extends Model<User> {
@@ -51,6 +54,16 @@ userSchema.statics.login = async function (log:string, password:string)
             throw new Error("Incorrect logs");
         }
     }
+}
+
+userSchema.statics.checkPassword = async function (id:string, password:string): Promise<boolean>
+{
+    if (!isValidObjectId(id)) return false //TODO : Error handle
+    const user = await userModel.findById(id);
+    if (isEmpty(user)) return false
+    const authUser = await compare(password, user!.password);
+    return authUser;
+
 }
 
 //default export.
