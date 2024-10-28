@@ -26,6 +26,7 @@ export interface IUserDocument extends IUser, Document {
 
 export interface IUserModel extends Model<IUserDocument> {
     login(log: string, password: string): Promise<IUserDocument | null>
+    checkPassword(id: string, password:string): Promise<boolean>
 }
 
 export type UserID = IUserDocument['_id'];
