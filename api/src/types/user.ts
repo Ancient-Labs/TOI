@@ -1,4 +1,4 @@
-import type { Document, Model, Types } from "mongoose";
+import type { Document, Model } from "mongoose";
 
 // src/types/user.ts
 export interface User
