@@ -7,7 +7,6 @@ import isEmail from "npm:validator/lib/isEmail.js";
 import type { IUserDocument, User } from "../src/types/index.ts";
 import type { IUserModel } from "../src/types/user.ts";
 import { isValidObjectId } from "mongoose";
-import log from "../log.ts";
 import { isEmpty } from "../src/utils/index.ts";
 
 
