@@ -4,6 +4,7 @@ import config from "../../config/config.ts";
 import log from "../../log.ts";
 import userModel from "../../models/user.model.ts";
 import type { IUserDocument, User } from "../types/index.ts";
+import { isEmpty } from "../utils/isEmpty.ts";
 
 //Cookie maxAge 7 days
 const maxAge:number = 604800000;
@@ -19,6 +20,12 @@ export async function signup(req:Request, res:Response): Promise<void>
 {
     // Username, Email and password are required.
     const {username, email, password}: {username:string,email:string,password:string} = req.body;
+
+    //TODO : Edit error Handler
+    if (isEmpty(username)) res.status(500).send({error: "not valid username"})
+    if (isEmpty(email)) res.status(500).send({error: "not valid email"})
+    if (isEmpty(password)) res.status(500).send({error: "not valid password"})
+
     try {
         const user = await userModel.create({username, email, password});
         log(`New user created : ${user._id}`, 3)
@@ -34,6 +41,10 @@ export async function signin(req:Request, res:Response): Promise<void>
     // Require a log (can be ethier email or username) and the password
     const {log, password}: {log:string,password:string} = req.body;
     
+    //TODO : Edit error Handler
+    if (isEmpty(log)) res.status(500).send({error: "not valid log"})
+    if (isEmpty(password)) res.status(500).send({error: "not valid password"})
+
     try {
         const queryUser:IUserDocument | null  = await userModel.login(log, password);
         if (queryUser)
